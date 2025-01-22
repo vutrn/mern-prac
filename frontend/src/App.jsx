@@ -10,7 +10,7 @@ import { Toaster } from "./components/ui/toaster";
 function App() {
   return (
     <>
-      <Box minH="100vh" bg={useColorModeValue("white", "gray.800")}>
+      <Box bg={useColorModeValue("white", "gray.800")}>
         <Navbar />
         <Routes>
           <Route index path="/" element={<HomePage />} />

@@ -9,7 +9,7 @@ const Navbar = () => {
   
 
   return (
-    <Container px="4" maxW="100%">
+    <Container px="4" fluid borderRadius={10} borderColor="black.500" borderWidth={2}>
       <Flex
         justifyContent="space-between"
         h="16"
@@ -22,7 +22,7 @@ const Navbar = () => {
           color="black"
           textAlign={{ base: "center", md: "left" }}
         >
-          MERN-practice
+          <Link to="/">MERN-practice</Link>
         </Text>
 
         <HStack spacing="4">
