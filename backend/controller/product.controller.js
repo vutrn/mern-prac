@@ -21,7 +21,7 @@ const postProduct = async (req, res) => {
 
   try {
     await newProduct.save();
-    res.status(201).json({ success: true, data: newProduct });
+    res.status(201).json({ success: true, message: "Product created successfully!", data: newProduct });
   } catch (error) {
     console.log("Error in creating product: ", error.message);
     res.status(500).json({ success: false, message: `SERVER ERROR` });
@@ -38,7 +38,8 @@ const putProduct = async (req, res) => {
 
   try {
     const updatedProduct = await Product.findByIdAndUpdate(id, product);
-    res.status(200).json({ success: true, data: updatedProduct });
+    res.status(200).json({ success: true, data: updatedProduct, message: "Product updated successfully" });
+    console.log("updated product: ", updatedProduct);
   } catch (error) {
     console.log("Error in updating product: ", error.message);
     res.status(500).json({ success: false, message: "SERVER ERROR" });
@@ -47,7 +48,7 @@ const putProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
-  // console.log("id: ", id);
+  console.log("request id: ", id);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).send(`No product with id: ${id}`);

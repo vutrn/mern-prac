@@ -1,6 +1,6 @@
 import ProductCard from "@/components/ProductCard";
-import useProductStore from "@/store/product";
-import { Box, Button, Container, Grid, HStack, Text, VStack } from "@chakra-ui/react";
+import useProductStore from "@/store/useProductStore";
+import { Container, Grid, Text, VStack } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
-  console.log("products", products);
+  console.log("useeffect fetch products", products);
 
   return (
     <Container py="12" borderRadius="1px" borderColor="black.500" borderWidth={2}>
@@ -19,8 +19,9 @@ const HomePage = () => {
         </Text>
 
         <Grid columns={{ base: 1, md: 2, lg: 3 }} templateColumns="repeat(4, 1fr)" gap={4}>
-          {products.map((value) => {
-            return <ProductCard key={value._id} product={value} />;
+          {products.map((value,index) => {
+            // console.log(value)
+            return <ProductCard key={index} value={value} />;
           })}
         </Grid>
 
